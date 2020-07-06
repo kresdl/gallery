@@ -10,6 +10,9 @@
     "@types/node": "^12.12.47",
     "@types/react": "^16.9.41",
     "@types/react-dom": "^16.9.8",
+    "@types/react-router-dom": "^5.1.5",
+    "@types/reflexbox": "^4.0.1",
+    "@types/webpack-env": "^1.15.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
@@ -35,5 +38,12 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/rebass": "^4.0.6",
+    "mobx": "^5.15.4",
+    "react-router-dom": "^5.2.0",
+    "rebass": "^4.0.7",
+    "reflexbox": "^4.0.6"
   }
 }
