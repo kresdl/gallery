@@ -7,18 +7,22 @@ import Photo from './Photo'
 const Browse = () => {
   const store = useStore()
 
-  return useObserver(() =>
-    <Flex flexWrap="wrap">
-      {
-        store.images.slice(store.current.offset)
-          .map(url =>
-            <Box m={10} key={url}>
-              <Photo url={url} />
-            </Box>
-          )
-      }
-    </Flex>
-  )
+  return useObserver(() => {
+    const { current: { offset }, images, prev } = store
+
+    return (
+      <Flex flexWrap="wrap">
+        {
+          prev.slice(offset)
+            .map((prevUrl, i) =>
+              <Box m={10} key={prevUrl}>
+                <Photo prevUrl={prevUrl} imgUrl={images[i + offset]} />
+              </Box>
+            )
+        }
+      </Flex>
+    )
+  })
 }
 
 export default Browse

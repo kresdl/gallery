@@ -3,11 +3,12 @@ import { Link } from 'react-router-dom'
 import { Flex, Image } from 'rebass'
 
 interface Props {
-  url: string
+  prevUrl: string,
+  imgUrl: string
 }
 
-const Photo = ({ url }: Props) =>
-  <Link to={url}>
+const Photo = ({ prevUrl, imgUrl }: Props) =>
+  <Link to={imgUrl}>
     <Flex sx={{
       width: 256,
       height: 256,
@@ -19,7 +20,7 @@ const Photo = ({ url }: Props) =>
       cursor: 'pointer'
     }}
     >
-      <Image src={url} sx={{
+      <Image src={prevUrl} sx={{
         maxWidth: 256,
         maxHeight: 256,
         alt: ''

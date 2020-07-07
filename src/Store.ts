@@ -2,12 +2,15 @@ import { observable, action, computed } from 'mobx'
 import { organize } from './util'
 import { Calender } from './types'
 
-const ctx = require.context('./images')
+const imgCtx = require.context('./images')
+const prevCtx = require.context('./prev')
+
 const { assign, keys } = Object
 
 class Store {
 
   images!: string[]
+  prev!: string[]
 
   calender!: Calender
 
@@ -45,8 +48,12 @@ class Store {
   }
 
   constructor() {
-    const imgKeys = ctx.keys(),
-      images = imgKeys.map(ctx) as string[],
+    const imgKeys = imgCtx.keys(),
+      images = imgKeys.map(imgCtx) as string[],
+
+      prevKeys = prevCtx.keys(),
+      prev = prevKeys.map(prevCtx) as string[],
+
       calender = organize(images),
 
       year = +keys(calender)[0],
@@ -54,7 +61,7 @@ class Store {
       month = +keys(months)[0],
       day = +keys(months[month])[0]
 
-    assign(this, { images, calender, year, month, day })
+    assign(this, { images, prev, calender, year, month, day })
   }
 }
 
