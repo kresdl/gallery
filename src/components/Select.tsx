@@ -1,31 +1,34 @@
 import React from 'react'
-import { Select as Sel } from '@rebass/forms'
+import styled from 'styled-components'
+import Sel from 'react-select'
 
-interface Props {
+type CustomProps = {
   items: string[],
   def: number,
-  onChange: (item: number) => void
+  onChange: (item: number) => void,
+  disabled?: boolean
 }
 
-type Evt = React.ChangeEvent<HTMLSelectElement>
+const StyledSel = styled(Sel)({
+  width: 110,
+  marginLeft: 5,
+  display: 'inline-block'
+})
 
-const Select = ({ items, def, onChange }: Props) => {
-  const change = (evt: Evt) => onChange(+evt.target.value)
+const Select: React.FC<CustomProps> = ({ items, def, onChange, disabled = false }) => {
+  const options = items.map(item => ({ 
+    value: +item, 
+    label: item 
+  }))
+  
+  const value = { 
+    value: def, 
+    label: def.toString() 
+  }
 
   return (
-    <Sel onChange={change} sx={{
-      defaultValue: def,
-      display: 'inline-block',
-      width: '8ch',
-      ml: 3
-    }}
-    >
-      {
-        items.map(item =>
-          <option value={item} key={item}>{item}</option>
-        )
-      }
-    </Sel>
+    <StyledSel multi={false} onChange={(opt: any) => onChange(opt?.value)} 
+      isDisabled={disabled} value={value} options={options} />
   )
 }
 

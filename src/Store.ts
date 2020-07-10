@@ -23,6 +23,9 @@ class Store {
   @observable
   day!: number
 
+  @observable
+  filter: boolean = false
+
   @computed
   get current() {
     return this.calender[this.year][this.month][this.day]
@@ -45,6 +48,11 @@ class Store {
   @action
   setDay = (day: number) => {
     this.day = day
+  }
+
+  @action
+  setFilter = (state: boolean) => {
+    this.filter = state
   }
 
   constructor() {
