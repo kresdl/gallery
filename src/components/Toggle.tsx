@@ -10,9 +10,8 @@ type CustomProps = {
 
 const Wrapper = styled(Box)({
   marginRight: 10,
-  padding: '6px 10px',
+  padding: '8px 10px',
   borderRadius: 3,
-  border: '1px solid black',
   cursor: 'pointer',
   '-webkit-user-select': 'none',
   'user-select': 'none'
@@ -20,7 +19,7 @@ const Wrapper = styled(Box)({
 
 const Toggle: React.FC<CustomProps> = ({ onChange, active, children }) =>
   <Wrapper onClick={() => onChange(!active)} sx={{
-    bg: active ? '#adf' : 'transparent'
+    bg: active ? '#adf' : 'white'
   }}
   >
     {children}

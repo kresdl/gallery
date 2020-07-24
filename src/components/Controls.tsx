@@ -15,7 +15,7 @@ const Controls = () => {
     days = keys(calender[year][month])
 
   return (
-    <Flex py={3} justifyContent="center" alignItems="center">
+    <Flex py={4} justifyContent="center" alignItems="center">
       <Toggle active={filter} onChange={setFilter}>Filter</Toggle>
       <Select def={year} items={years} onChange={setYear} disabled={!filter}/>
       <Select def={month} items={months} onChange={setMonth} disabled={!filter}/>

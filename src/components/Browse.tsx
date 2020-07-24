@@ -1,8 +1,16 @@
 import React from 'react'
 import { useStore } from '../hooks'
-import { Flex, Box } from 'rebass'
+import { Box } from 'rebass'
 import { observer } from 'mobx-react-lite'
 import Prev from './Prev'
+import styled from 'styled-components'
+
+const Grid = styled(Box)({
+  display: 'grid',
+  gridTemplateColumns: 'repeat(auto-fill, 256px)',
+  justifyContent: 'center',
+  gap: 50
+})
 
 const Browse = () => {
   const store = useStore()
@@ -14,15 +22,13 @@ const Browse = () => {
     [prev[start + i], images[start + i]])
 
   return (
-    <Flex flexWrap="wrap">
+    <Grid>
       {
         src.map(([prev, img]) =>
-          <Box m={10} key={prev}>
-            <Prev prevUrl={prev} imgUrl={img} />
-          </Box>
+          <Prev prevUrl={prev} imgUrl={img} />
         )
       }
-    </Flex>
+    </Grid>
   )
 }
 
